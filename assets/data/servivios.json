@@ -1,0 +1,14 @@
+[
+  {
+    "titulo": "Smart Grid AI",
+    "descripcion": "Optimización de redes eléctricas mediante inteligencia artificial para mejorar la eficiencia energética."
+  },
+  {
+    "titulo": "Solar Modular",
+    "descripcion": "Paneles solares modulares integrados en edificios urbanos para una producción energética sostenible."
+  },
+  {
+    "titulo": "Vehicle-to-Grid",
+    "descripcion": "Tecnología que permite a los vehículos eléctricos devolver energía a la red cuando sea necesario."
+  }
+]
