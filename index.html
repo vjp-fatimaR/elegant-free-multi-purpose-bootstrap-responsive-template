@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="author" content="fatimaR"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="webthemez">
     <title>EcoPulse Dynamics | Energía inteligente</title>
@@ -191,19 +192,30 @@
                         <div class="contact-form">
                        
                             <form id="main-contact-form" name="contact-form" method="post" action="#">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" rows="8" placeholder="Message" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Send Message</button>
+
+                            <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" required>
+                            </div>
+
+                            <div class="form-group">
+                            <select class="form-control" required>
+                            <option value="">Tipo de Proyecto</option>
+                            <option>Smart Grid AI</option>
+                            <option>Solar Modular</option>
+                            <option>V2G (Vehicle-to-Grid)</option>
+                            </select>
+                            </div>
+
+                            <div class="form-group">
+                            <textarea name="mensaje" class="form-control" rows="8" placeholder="Mensaje" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+
                             </form>
                         </div>
                     </div>
