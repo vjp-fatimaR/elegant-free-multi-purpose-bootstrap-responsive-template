@@ -772,6 +772,17 @@ font-size: 15px;
 padding: 6px 12px;
 border-radius: 0;
 }
+
+#contact .form-control{
+  border-radius: 4px;
+  box-shadow: none;
+  border: 1px solid #E5E7EB;
+}
+
+#contact .form-control:focus{
+  border-color: #10B981;
+  box-shadow: 0 0 0 2px rgba(16,185,129,0.15);
+}
  .business-stats:before {
 content: '';
 margin: 17px;
@@ -843,4 +854,48 @@ margin: 9px auto;
 #portfolio .portfolio-item .portfolio-item-inner .portfolio-info {
 padding: 7px 0 0;
 }
+}
+
+#services .service-box{
+background: #ffffff;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+border-radius: 4px;
+padding: 20px;
+margin-bottom: 20px;
+min-height: 220px;
+}
+
+#services .pull-left i{
+color: #10B981;
+font-size: 28px;
+}
+
+#services .media-heading{
+margin-bottom: 12px;
+}
+
+#hero-banner h2{
+  max-width: 520px;
+  line-height: 1.2;
+}
+
+#hero-banner p{
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.navbar-brand{
+  font-family: Montserrat, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #10B981 !important;
+}
+
+#services .service-box .fa{
+  color: #10B981 !important;
+  font-size: 28px !important;
+  display: inline-block;
+  width: 30px;
+  text-align: center;
 }
