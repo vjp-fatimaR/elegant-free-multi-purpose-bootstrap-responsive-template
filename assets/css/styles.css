@@ -89,7 +89,7 @@ hr {
 }
 .section-header .section-title {
   font-size: 44px;
-  color: #C3360B;
+  color: var(--ep-green-primary);
   text-transform: uppercase;
   position: relative;
   padding-bottom: 20px;
@@ -110,7 +110,7 @@ hr {
   border-radius: 0;
 }
 .btn.btn-primary {
-  background: #C3360B;
+  background: #10B981;
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
@@ -129,7 +129,7 @@ hr {
   bottom: -1px;
   left: 0;
   width: 40%;
-  border-bottom: 1px solid #C3360B;
+  border-bottom: 1px solid #10B981;
 }
 ul.nostyle {
   list-style: none;
@@ -185,7 +185,7 @@ text-transform: uppercase;
 background: #FFFFFF;
 }
 #main-nav.navbar-default .navbar-nav > li.active > a, #main-nav.navbar-default .navbar-nav > li.open > a, #main-nav.navbar-default .navbar-nav > li:hover > a {
-background: rgb(195, 54, 11);
+background:  #10B981;
 color: #FFFFFF;
 }
 .navbar.navbar-default {
@@ -211,12 +211,12 @@ color: #FFFFFF;
     padding-bottom: 40px;
   }
   .navbar-default .navbar-nav>li>a {
-	color: #C3360B;
+	color: #1F2937;
 	}
   #main-nav.navbar-default .navbar-nav > li.active > a,
   #main-nav.navbar-default .navbar-nav > li.open > a,
   #main-nav.navbar-default .navbar-nav > li:hover > a {
-    background: rgb(195, 54, 11); 
+    background: #10B981; 
 	
     color: #FFF;
   }
@@ -332,7 +332,7 @@ color: #FFFFFF;
 #features h2, #portfolio p{ color: #fff;}
 #features {
   padding: 100px 0;
-  background: #C3360B;
+  background: #10B981;
   color: #fff;
 }
 
@@ -362,7 +362,7 @@ color: #FFFFFF;
   position: relative;
 }
 .features .media.service-box .pull-left > i{
-color:#CC5632;
+color:#10B981;
 }
 .media.service-box:hover .pull-left > i {  
 }
@@ -384,13 +384,13 @@ color:#CC5632;
   display: block;
   padding: 7px 15px;
   margin:0px 2px;
-  color: #C3360B;
+  color: #10B981;
   position: relative;
-  border: 1px solid #C3360B;
+  border: 1px solid #10B981;
 }
 #portfolio .portfolio-filter > li a:hover,
 #portfolio .portfolio-filter > li a.active {
-  background: #C3360B;
+  background: #10B981;
   color: #fff; 
 } 
 #portfolio .portfolio-items {
@@ -549,9 +549,9 @@ margin: 0 8px;
   padding-bottom: 10px; 
 } 
 #our-team .team-member:hover .social-icons > li > a {
-  background: rgb(195, 54, 11);
+  background: #10B981;
   color: #FFFFFF;
-  border: 1px solid #C3360B;
+  border: 1px solid #10B981;
 }
  
 #our-team .social-icons {
@@ -570,10 +570,10 @@ margin: 0 8px;
   height: 32px;
   line-height: 32px;
   text-align: center;
-  color: #C3360B;
+  color: #10B981;
   background: transparent;
   border-radius: 3px;
-  border: 1px solid #C3360B;
+  border: 1px solid #10B981;
 }
 /*Testimonial Area*/
 
@@ -667,7 +667,7 @@ margin: 0 8px;
 }
 #business-stats {
   padding: 100px 0 70px;
-  background: #C3360B;
+  background: #10B981;
   background-size: cover;
   color: #fff;
 }
@@ -747,11 +747,53 @@ margin: 0 8px;
   border: 0;
 }
 #pricing ul.pricing.featured li.plan-header {
-  background: #C3360B;
+  background: #10B981;
 }
 #pricing ul.pricing.featured li.plan-header .plan-name {
   color: #fff;
 }
+
+#projects{
+  background: #F9FAFB;
+  padding: 80px 0;
+}
+
+#projects .section-title{
+  color: var(--ep-green-primary);
+}
+
+.project-cards{
+  margin-top: 30px;
+}
+
+.project-card{
+  background: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  padding: 30px 25px;
+  min-height: 220px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px -4px rgba(0,0,0,0.15);
+}
+
+.project-card h4{
+  color: var(--ep-dark-carbon);
+  margin-bottom: 15px;
+  font-family: Montserrat, Arial, sans-serif;
+  font-weight: 700;
+}
+
+.project-card p{
+  color: var(--ep-text-muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
 #contact-us {
   padding: 100px 0 10px;
 }
@@ -800,7 +842,7 @@ width: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
   color: #fff;
-  background: #C3360B;
+  background: #10B981;
 }
 #footer a {
   color: #fff;
@@ -898,4 +940,11 @@ margin-bottom: 12px;
   display: inline-block;
   width: 30px;
   text-align: center;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 90px;
 }

@@ -27,23 +27,23 @@ navLinks.forEach((item) => {
   });
 });
 const menuItems = document.querySelectorAll(".navbar-nav li");
+
 const sections = [
   { id: "home", menuText: "Inicio" },
   { id: "services", menuText: "Servicios" },
+  { id: "projects", menuText: "Proyectos" },
   { id: "about", menuText: "Sobre Nosotros" },
   { id: "contact-us", menuText: "Contacto" }
 ];
 
 function setActiveMenuBySection() {
   let current = "home";
+  const scrollPosition = window.scrollY + 250;
 
   sections.forEach((section) => {
     const el = document.getElementById(section.id);
-    if (el) {
-      const top = el.offsetTop - 120;
-      if (window.scrollY >= top) {
-        current = section.menuText;
-      }
+    if (el && scrollPosition >= el.offsetTop) {
+      current = section.menuText;
     }
   });
 
@@ -58,3 +58,10 @@ function setActiveMenuBySection() {
 
 window.addEventListener("scroll", setActiveMenuBySection);
 window.addEventListener("load", setActiveMenuBySection);
+
+menuItems.forEach((item) => {
+  item.addEventListener("click", function () {
+    menuItems.forEach((li) => li.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
