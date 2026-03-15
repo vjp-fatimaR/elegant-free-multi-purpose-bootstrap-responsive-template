@@ -3,7 +3,7 @@
 Proyecto web basado en una plantilla Bootstrap adaptada para la empresa ficticia EcoPulse Dynamics.
 
 ## Captura de pantalla
-![Captura de la web](assets/img/captura.png)
+![Captura del proyecto](assets/img/captura.png)
 
 ## Enlace al sitio en producción
 
