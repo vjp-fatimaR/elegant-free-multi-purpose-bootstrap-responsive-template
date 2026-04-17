@@ -1,42 +1,78 @@
 # EcoPulse Dynamics
 
-Proyecto web basado en una plantilla Bootstrap adaptada para la empresa ficticia EcoPulse Dynamics.
+Proyecto web basado en una plantilla Bootstrap adaptada para la empresa ficticia **EcoPulse Dynamics**, centrada en soluciones de energía inteligente para ciudades sostenibles.
 
-## Captura de pantalla
+---
+
+## 📸 Captura de pantalla
 ![Captura del proyecto](assets/img/captura.png)
 
-## Enlace al sitio en producción
+---
 
-https://vjp-fatimaR.github.io/elegant-free-multi-purpose-bootstrap-responsive-template/
+## 🌐 Enlace al sitio en producción
 
-## Enlace a la plantilla base utilizada
+👉 https://vjp-fatimaR.github.io/elegant-free-multi-purpose-bootstrap-responsive-template/
 
-https://github.com/LMSGI-VJP/vjp-fatimaR/elegant-free-multi-purpose-bootstrap-responsive-template
+---
 
-## Tecnologías utilizadas
+## 🧩 Funcionalidades principales
 
-- HTML5
-- CSS3
-- Bootstrap
-- JavaScript
-- JSON
-- Font Awesome
-- GitHub
-- GitHub Pages
-- Imágenes en formato WebP
+### 🔹 Fase 1
+- Diseño responsive con Bootstrap
+- Navegación con scroll suave
+- Secciones: Inicio, Servicios, Proyectos, Sobre Nosotros, Contacto
+- Carga dinámica de servicios mediante JSON (fetch)
 
-## Estructura del proyecto
+### 🔹 Fase 2
+- ✔️ Validación avanzada de formulario (JavaScript)
+- ✔️ Feedback visual en campos (error / success)
+- ✔️ Contador de caracteres y palabras en mensaje
+- ✔️ Página adicional: **Dashboard de Energía Solar**
+- ✔️ Cálculo dinámico de energía (kWh/día)
+- ✔️ Visualización de datos con **Chart.js**
+- ✔️ Uso de **localStorage** para guardar resultados
 
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- HTML5  
+- CSS3  
+- Bootstrap  
+- JavaScript (ES6)  
+- JSON  
+- Chart.js  
+- Font Awesome  
+- GitHub  
+- GitHub Pages  
+- Imágenes en formato WebP  
+            
+---
+
+## 📂 Estructura del proyecto
+```
 assets/
-- css/
-- js/
-- img/
-- data/
+├── css/
+│ └── styles.css
+├── data/
+│ └── servicios.json
+├── img/
+│ ├── banner/
+│ ├── ico/
+│ ├── portfolio/
+│ ├── prettyPhoto/
+│ ├── team/
+│ ├── about.webp
+│ ├── Captura.png
+│ ├── hero.webp
+│ ├── logo.png
+│ ├── pic1.jpg
+│ └── pic2.jpg
+├── js/
+│ ├── dashboard.js
+│ └── main.js
 
-fonts/  
-index.html  
+dashboard.html
+index.html
 README.md
-
-## Autor
-
-Proyecto académico – Desarrollo Web
+```

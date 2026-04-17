@@ -45,6 +45,7 @@
                         <li class="scroll"><a href="#services">Servicios</a></li>
                         <li class="scroll"><a href="#projects">Proyectos</a></li>
                         <li class="scroll"><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
                         <li class="scroll"><a href="#contact-us">Contacto</a></li>                        
                     </ul>
                 </div>
@@ -229,31 +230,45 @@
                     <div class="col-sm-8 col-md-8">
                         <div class="contact-form">
                        
-                            <form id="main-contact-form" name="contact-form" method="post" action="#">
+                            <form id="main-contact-form" name="contact-form" method="post" action="#" novalidate>
 
-                            <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre *</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                                    <small id="nombre-feedback" class="field-feedback"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="empresa">Empresa</label>
+                                    <input type="text" id="empresa" name="empresa" class="form-control" placeholder="Empresa">
+                                    <small id="empresa-feedback" class="field-feedback"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tipoProyecto">Tipo de Proyecto * (elige al menos 2)</label>
+                                    <select id="tipoProyecto" name="tipoProyecto" class="form-control" multiple size="3">
+                                        <option value="Smart Grid AI">Smart Grid AI</option>
+                                        <option value="Solar Modular">Solar Modular</option>
+                                        <option value="V2G (Vehicle-to-Grid)">V2G (Vehicle-to-Grid)</option>
+                                    </select>
+                                    <small id="tipoProyecto-feedback" class="field-feedback"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mensaje">Mensaje *</label>
+                                    <textarea id="mensaje" name="mensaje" class="form-control" rows="8" placeholder="Mensaje"></textarea>
+                                    <small id="mensaje-feedback" class="field-feedback"></small>
+
+                                <div id="message-counter" class="message-counter">
+                                    <span id="min-counter">Faltan 30 caracteres para el mínimo.</span><br>
+                                    <span id="max-counter">Disponibles: 1000 caracteres.</span><br>
+                                    <span id="word-counter">Palabras: 0 / mínimo 4.</span>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                            <input type="text" name="empresa" class="form-control" placeholder="Empresa" required>
-                            </div>
+                            <div id="form-status" class="form-status" aria-live="polite"></div>
 
-                            <div class="form-group">
-                            <select class="form-control" required>
-                            <option value="">Tipo de Proyecto</option>
-                            <option>Smart Grid AI</option>
-                            <option>Solar Modular</option>
-                            <option>V2G (Vehicle-to-Grid)</option>
-                            </select>
-                            </div>
-
-                            <div class="form-group">
-                            <textarea name="mensaje" class="form-control" rows="8" placeholder="Mensaje" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-
+                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                             </form>
                         </div>
                     </div>
