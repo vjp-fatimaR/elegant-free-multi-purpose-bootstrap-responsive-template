@@ -1,24 +1,48 @@
 function calculateEnergy() {
-  const hours = parseFloat(document.getElementById("hours").value);
-  const power = parseFloat(document.getElementById("power").value);
+  const loader = document.getElementById("loader");
+  loader.style.display = "block";
 
-  const result = document.getElementById("result");
+  setTimeout(() => {
+    const hours = parseFloat(document.getElementById("hours").value);
+    const power = parseFloat(document.getElementById("power").value);
 
-  if (isNaN(hours) || isNaN(power) || hours <= 0 || power <= 0) {
-    result.innerHTML = "<span style='color:red'>Introduce valores válidos (números mayores que 0)</span>";
-    return;
-  }
+    const result = document.getElementById("result");
+    const tip = document.getElementById("tip");
 
-  const energy = hours * power;
+    if (isNaN(hours) || isNaN(power) || hours <= 0 || power <= 0) {
+      result.innerHTML = "<span style='color:red'>Introduce valores válidos</span>";
+      tip.innerText = "";
+      loader.style.display = "none";
+      return;
+    }
 
-  result.innerHTML = "<strong>Energía generada: " + energy + " kWh/día</strong>";
+    const energy = hours * power;
 
-  localStorage.setItem("lastEnergy", energy);
+    result.innerHTML = "<strong>Energía generada: " + energy + " kWh/día</strong>";
 
-  createChart(energy);
+    tip.innerText =
+      energy > 20
+        ? "Alta producción energética 🌞"
+        : "Producción moderada ⚡";
+
+    localStorage.setItem("lastEnergy", energy);
+    localStorage.setItem("lastHours", hours);
+    localStorage.setItem("lastPower", power);
+
+    document.getElementById("card-energy").innerText = energy + " kWh";
+    document.getElementById("card-hours").innerText = hours + " h";
+    document.getElementById("card-power").innerText = power + " kW";
+    document.getElementById("card-status").innerText =
+      energy > 20 ? "Alta" : "Media";
+
+    createChart(energy);
+
+    loader.style.display = "none";
+  }, 800);
 }
 
 
+// ===== CHART =====
 function createChart(energy) {
   const ctx = document.getElementById("energyChart").getContext("2d");
 
@@ -38,6 +62,11 @@ function createChart(energy) {
     },
     options: {
       responsive: true,
+      plugins: {
+        legend: {
+          display: true
+        }
+      },
       scales: {
         y: {
           beginAtZero: true
@@ -49,10 +78,20 @@ function createChart(energy) {
 
 
 window.addEventListener("load", function () {
-  const saved = localStorage.getItem("lastEnergy");
+  const savedEnergy = localStorage.getItem("lastEnergy");
+  const savedHours = localStorage.getItem("lastHours");
+  const savedPower = localStorage.getItem("lastPower");
 
-  if (saved) {
+  if (savedEnergy) {
     document.getElementById("result").innerHTML =
-      "<em>Última energía calculada: " + saved + " kWh/día</em>";
+      "<em>Última energía calculada: " + savedEnergy + " kWh/día</em>";
+
+    createChart(parseFloat(savedEnergy));
+
+    document.getElementById("card-energy").innerText = savedEnergy + " kWh";
+    document.getElementById("card-hours").innerText = savedHours + " h";
+    document.getElementById("card-power").innerText = savedPower + " kW";
+    document.getElementById("card-status").innerText =
+      savedEnergy > 20 ? "Alta" : "Media";
   }
 });

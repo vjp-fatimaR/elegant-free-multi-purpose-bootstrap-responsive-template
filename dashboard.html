@@ -37,7 +37,37 @@
 
     <h2 class="text-center">Dashboard Energía Solar</h2>
     <hr>
+    <div class="row" style="margin-bottom:40px;">
 
+  <div class="col-md-3">
+    <div class="card-box">
+      <h4>Energía</h4>
+      <p id="card-energy">0 kWh</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card-box">
+      <h4>Horas</h4>
+      <p id="card-hours">0 h</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card-box">
+      <h4>Potencia</h4>
+      <p id="card-power">0 kW</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card-box">
+      <h4>Estado</h4>
+      <p id="card-status">---</p>
+    </div>
+  </div>
+
+    </div>
     <div class="form-group">
         <label>Horas de sol al día</label>
         <input type="number" id="hours" min="1" class="form-control" value="5" required>
@@ -52,7 +82,15 @@
 
     <h3 id="result" style="margin-top:20px;"></h3>
 
-    <canvas id="energyChart" style="margin-top:30px;"></canvas>
+    <p id="tip" style="margin-top:10px; color:#6B7280;"></p>
+
+    <div id="loader" style="display:none; text-align:center; margin-top:20px;">
+      <p style="color:#10B981; font-weight:bold;">Calculando energía...</p>
+    </div>
+
+    <div class="card-box" style="margin-top:30px;">
+      <canvas id="energyChart"></canvas>
+    </div>
 
 </div>
 
