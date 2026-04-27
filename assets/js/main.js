@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupContactFormValidation();
 });
 
-
 function loadServices() {
   fetch("assets/data/servicios.json")
     .then(response => response.json())
@@ -13,24 +12,15 @@ function loadServices() {
       const serviceTexts = document.querySelectorAll("#services .media-body p");
 
       servicios.forEach((servicio, index) => {
-        if (serviceTitles[index]) {
-          serviceTitles[index].textContent = servicio.titulo;
-        }
-        if (serviceTexts[index]) {
-          serviceTexts[index].textContent = servicio.descripcion;
-        }
+        if (serviceTitles[index]) serviceTitles[index].textContent = servicio.titulo;
+        if (serviceTexts[index]) serviceTexts[index].textContent = servicio.descripcion;
       });
     })
-    .catch(error => {
-      console.error("Error al cargar servicios.json:", error);
-    });
+    .catch(error => console.error("Error al cargar servicios.json:", error));
 }
-
 
 function setupMenuActiveState() {
   const menuItems = document.querySelectorAll(".navbar-nav li");
-
-  if (!menuItems.length) return;
 
   const sections = [
     { id: "home", menuText: "Inicio" },
@@ -44,33 +34,21 @@ function setupMenuActiveState() {
     let current = "Inicio";
     const scrollPosition = window.scrollY + 250;
 
-    sections.forEach((section) => {
+    sections.forEach(section => {
       const el = document.getElementById(section.id);
-      if (el && scrollPosition >= el.offsetTop) {
-        current = section.menuText;
-      }
+      if (el && scrollPosition >= el.offsetTop) current = section.menuText;
     });
 
-    menuItems.forEach((item) => {
+    menuItems.forEach(item => {
       item.classList.remove("active");
       const link = item.querySelector("a");
-      if (link && link.textContent.trim() === current) {
-        item.classList.add("active");
-      }
+      if (link && link.textContent.trim() === current) item.classList.add("active");
     });
   }
 
   window.addEventListener("scroll", setActiveMenuBySection);
   window.addEventListener("load", setActiveMenuBySection);
-
-  menuItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      menuItems.forEach((li) => li.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
 }
-
 
 function setupContactFormValidation() {
   const form = document.getElementById("main-contact-form");
@@ -82,15 +60,16 @@ function setupContactFormValidation() {
   const mensaje = document.getElementById("mensaje");
 
   const formStatus = document.getElementById("form-status");
-
   const minCounter = document.getElementById("min-counter");
   const maxCounter = document.getElementById("max-counter");
   const wordCounter = document.getElementById("word-counter");
 
   nombre.addEventListener("blur", validateNombre);
   tipoProyecto.addEventListener("change", validateTipoProyecto);
-  tipoProyecto.addEventListener("blur", validateTipoProyecto);
-  mensaje.addEventListener("input", updateCounters);
+  mensaje.addEventListener("input", function () {
+    updateCounters();
+    validateMensaje();
+  });
   mensaje.addEventListener("blur", validateMensaje);
 
   form.addEventListener("submit", function (e) {
@@ -101,9 +80,6 @@ function setupContactFormValidation() {
     const v3 = validateMensaje();
 
     if (v1 && v2 && v3) {
-      formStatus.className = "form-status success";
-      formStatus.textContent = "Formulario enviado correctamente.";
-
       const formData = {
         nombre: nombre.value.trim(),
         empresa: empresa.value.trim(),
@@ -113,24 +89,29 @@ function setupContactFormValidation() {
 
       localStorage.setItem("ecopulse_contact_form", JSON.stringify(formData));
 
-      form.reset();
-      updateCounters();
+      formStatus.className = "form-status success";
+      formStatus.textContent = "Formulario enviado correctamente.";
 
-      document.querySelectorAll(".form-group").forEach(g => {
-        g.classList.remove("has-success");
-      });
+      formStatus.className = "form-status success";
 
-      document.querySelectorAll(".field-feedback").forEach(f => {
-        f.textContent = "";
-        f.classList.remove("success", "error");
-      });
+    const formData = {
+      nombre: nombre.value.trim(),
+      empresa: empresa.value.trim(),
+      tipoProyecto: Array.from(tipoProyecto.selectedOptions).map(opt => opt.value),
+      mensaje: mensaje.value.trim()
+    };
 
+formStatus.innerHTML = `
+  <strong>✅ Formulario enviado correctamente</strong><br><br>
+  <pre style="text-align:left; background:#111; color:#0f0; padding:10px;">
+${JSON.stringify(formData, null, 2)}
+  </pre>
+`;
     } else {
       formStatus.className = "form-status error";
       formStatus.textContent = "Corrige los errores antes de enviar.";
     }
   });
-
 
   function validateNombre() {
     if (nombre.value.trim() === "") {
@@ -155,14 +136,15 @@ function setupContactFormValidation() {
 
   function validateMensaje() {
     const text = mensaje.value.trim();
-    const words = text === "" ? [] : text.split(/\s+/).filter(w => w.length > 0);
+    const cleanText = text.replace(/\s+/g, " ");
+    const words = cleanText === "" ? [] : cleanText.split(" ").filter(w => w.length > 0);
 
-    if (text.length < 30) {
+    if (cleanText.length < 30) {
       setError(mensaje, "mensaje-feedback", "Mínimo 30 caracteres.");
       return false;
     }
 
-    if (text.length > 1000) {
+    if (cleanText.length > 1000) {
       setError(mensaje, "mensaje-feedback", "Máximo 1000 caracteres.");
       return false;
     }
@@ -176,12 +158,10 @@ function setupContactFormValidation() {
     return true;
   }
 
-
   function updateCounters() {
-    const text = mensaje.value.trim();
-    const words = text === "" ? [] : text.split(/\s+/).filter(w => w.length > 0);
-
+    const text = mensaje.value.trim().replace(/\s+/g, " ");
     const chars = text.length;
+    const words = text === "" ? [] : text.split(" ").filter(w => w.length > 0);
     const wordCount = words.length;
 
     minCounter.textContent =
@@ -191,11 +171,8 @@ function setupContactFormValidation() {
       `Disponibles: ${1000 - chars}`;
 
     wordCounter.textContent =
-      wordCount >= 4
-        ? `Palabras: ${wordCount} OK`
-        : `Palabras: ${wordCount}/4`;
+      wordCount >= 4 ? `Palabras: ${wordCount} OK` : `Palabras: ${wordCount}/4`;
   }
-
 
   function setError(input, id, msg) {
     const group = input.closest(".form-group");
